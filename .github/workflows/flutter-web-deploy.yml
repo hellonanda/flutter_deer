@@ -18,13 +18,13 @@ jobs:
           run: |
             flutter upgrade
             flutter config --enable-web
-            flutter build web
+            flutter build web -v
 
         # Deploy Firebase Hosting
         - name: Deploy Firebase Hosting
           uses: w9jds/firebase-action@master
           with:
-            args: deploy --only hosting:flutter-webhost
+            args: deploy --only hosting:flutter-webhost --debug
           env:
             FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
             PROJECT_PATH: ./build/web
